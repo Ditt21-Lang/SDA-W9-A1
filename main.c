@@ -33,20 +33,25 @@ int main(){
         switch (menu_select)
         {
         case 1:
+            printf("Tree dengan pre order\n");
             PreOrder(tree);
             break;
         case 2:
+            printf("Tree dengan in order\n");
             InOrder(tree);
             break;
         case 3:
+            printf("Tree dengan post order\n");
             PostOrder(tree);
             break;
         case 4:
             printf("Maksimal kedalaman: ");
             scanf(" %d", &arg_int);
+            printf("Tree dengan level order\n");
             Level_order(tree, arg_int);
             break;
         case 5:
+            printf("Seluruh node pada binary tree\n");
             PrintTree(tree);
             break;
         case 6:

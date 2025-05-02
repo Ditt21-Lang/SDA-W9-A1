@@ -98,7 +98,20 @@ void Level_order(Tree tree, int Maks_node){
 }
 
 void PrintTree (Tree tree){
-    PreOrder(tree);
+    int index = 1;
+    nbtree node = tree[index];
+    while(node.info != '\0'){
+        printf("--> Indeks ke-%d\n", index);
+        printf("---------------------------\n");
+        printf("Info array ke-%d        : %c\n", index, node.info);
+        printf("First son array ke-%d   : %d\n", index, node.first_son);
+        printf("next brother array ke-%d: %d\n", index, node.next_brother);
+        printf("parent array ke-%d      : %d\n", index, node.parent);
+        printf("---------------------------\n\n");
+
+        index += 1;
+        node = tree[index];
+    }
 }
 
 boolean SearchHelper(Tree tree, infotype X, address index){
