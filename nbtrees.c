@@ -41,6 +41,7 @@ void PreOrderHelper(Tree tree, address index){
 
 void PreOrder (Tree tree){
     PreOrderHelper(tree, 1);
+    printf("\n");
 }
 
 void InOrderHelper(Tree tree, address index){
@@ -62,6 +63,7 @@ void InOrderHelper(Tree tree, address index){
 
 void InOrder (Tree tree){
     InOrderHelper(tree, 1);
+    printf("\n");
 }
 
 void PostOrderHelper(Tree tree, address index){
@@ -76,6 +78,7 @@ void PostOrderHelper(Tree tree, address index){
 
 void PostOrder (Tree tree){
     PostOrderHelper(tree, 1);
+    printf("\n");
 }
 
 void Level_order_Helper(Tree tree, int maks_level, address index, int level_sekarang){
@@ -91,6 +94,7 @@ void Level_order_Helper(Tree tree, int maks_level, address index, int level_seka
 
 void Level_order(Tree tree, int Maks_node){
     Level_order_Helper(tree, Maks_node, 1, 0);
+    printf("\n");
 }
 
 void PrintTree (Tree tree){
@@ -157,7 +161,7 @@ int levelHelper(Tree tree, infotype X,address index, int level_sekarang){
         if (tree[index].info == X){
             return level_sekarang;
         } else {
-            return Max(levelHelper(tree , X,tree[index].first_son, level_lanjut), levelHelper(tree , X, tree[index].next_brother, level_sekarang));
+            return MaxInt(levelHelper(tree , X,tree[index].first_son, level_lanjut), levelHelper(tree , X, tree[index].next_brother, level_sekarang));
         }   
         
     }
@@ -174,13 +178,20 @@ int Max (infotype Data1, infotype Data2){
     return Data2;
 }
 
+int MaxInt(int data1, int data2) {
+    if ( data1 > data2){
+        return data1;
+    } 
+    return data2;
+}
+
 
 int DepthHelper(Tree tree, address index, int level_sekarang){
     int level_lanjut = level_sekarang + 1;
     if(tree[index].info == '\0'){
         return level_sekarang;
     } else {
-        return Max(DepthHelper(tree,tree[index].next_brother, level_sekarang), DepthHelper(tree,tree[index].first_son, level_lanjut));
+        return MaxInt(DepthHelper(tree,tree[index].next_brother, level_sekarang), DepthHelper(tree,tree[index].first_son, level_lanjut));
     }
 }   
 
