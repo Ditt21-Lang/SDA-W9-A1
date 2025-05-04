@@ -54,7 +54,7 @@ void PostOrder (Tree tree);
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah ditampilkan secara PostOrder : fs, nb, Parent */
 
-void Level_order_Helper(Tree tree, int maks_level, address index, int level_sekarang);
+void Level_order_Helper(Tree tree, int maks_level);
 
 void Level_order(Tree tree, int Maks_node);
 /* Traversal LevelOrder */

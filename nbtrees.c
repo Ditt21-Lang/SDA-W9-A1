@@ -82,13 +82,14 @@ void PostOrder (Tree tree){
     printf("\n");
 }
 
-void Level_order_Helper(Tree tree, int maks_level, address index, int level_sekarang){
+void Level_order_Helper(Tree tree, int maks_level){
+    address level_sekarang = 0;
     Queue q1, q2, tmp;
     address cursor, cursor2;
     CreateQueue(&q1);
     CreateQueue(&q2);
     EnQueue(&q1, 1);
-    while (!is_Empty(q1))
+    while (!is_Empty(q1) && level_sekarang <= maks_level)
     {
         while(!is_Empty(q1)){
             deQueue(&q1, &cursor);
@@ -102,12 +103,13 @@ void Level_order_Helper(Tree tree, int maks_level, address index, int level_seka
         tmp = q1;
         q1 = q2;
         q2 = tmp;
+        level_sekarang += 1;
     }
     
 }
 
 void Level_order(Tree tree, int Maks_node){
-    Level_order_Helper(tree, Maks_node, 1, 0);
+    Level_order_Helper(tree, Maks_node);
     printf("\n");
 }
 
