@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "nbtrees.h"
+#include "queue.h"
 
 void Create_tree(Tree tree, int Jml_Node){
     Tree pohon = {
@@ -82,14 +83,27 @@ void PostOrder (Tree tree){
 }
 
 void Level_order_Helper(Tree tree, int maks_level, address index, int level_sekarang){
-    int level_lanjut = level_sekarang + 1;
-    if(tree[index].info == '\0' || level_sekarang > maks_level){
-        return;
-    } else {
-        printf("%c", tree[index].info);
-        Level_order_Helper(tree, maks_level ,tree[index].next_brother, level_sekarang);
-        Level_order_Helper(tree, maks_level ,tree[index].first_son, level_lanjut);
+    Queue q1, q2, tmp;
+    address cursor, cursor2;
+    CreateQueue(&q1);
+    CreateQueue(&q2);
+    EnQueue(&q1, 1);
+    while (!is_Empty(q1))
+    {
+        while(!is_Empty(q1)){
+            deQueue(&q1, &cursor);
+            printf("%c", tree[cursor].info);
+            cursor2 = tree[cursor].first_son;
+            while (cursor2 != nil){
+                EnQueue(&q2, cursor2);
+                cursor2 = tree[cursor2].next_brother;
+            } 
+        }
+        tmp = q1;
+        q1 = q2;
+        q2 = tmp;
     }
+    
 }
 
 void Level_order(Tree tree, int Maks_node){
